@@ -23,3 +23,17 @@ const devices: Device[] = [
   { assetTag: "MB-4002", name: "MacBook Air M2",      model: "MacBook Air",    purchaseYear: 2023, location: "District Office" },
   { assetTag: "CB-1006", name: "Dell Chromebook 3110", model: "Dell Chromebook", purchaseYear: 2019, location: "Storage" },
 ];
+const scehma = z.object({
+assetTag: z.string(),
+name: z.string(),
+model: z.string(),
+purchaseYear: z.number(),
+location: z.string()
+})
+  const {object} = await generateObject({
+    model: anthropic('claude-haiku-4-3')
+    prompt: q,
+    schema: schema
+});
+console.log(object);
+}
