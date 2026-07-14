@@ -1,6 +1,8 @@
+
 import * as z from "zod";
 import { anthropic } from "@ai-sdk/anthropic"
 import { generateObject } from "ai"
+
 type Device = {
   assetTag: string;
   name: string;
@@ -26,6 +28,7 @@ const devices: Device[] = [
   { assetTag: "MB-4002", name: "MacBook Air M2",      model: "MacBook Air",    purchaseYear: 2023, location: "District Office" },
   { assetTag: "CB-1006", name: "Dell Chromebook 3110", model: "Dell Chromebook", purchaseYear: 2019, location: "Storage" },
 ];
+
 const schema = z.object({
     location: z.string().nullable(),
     model: z.string().nullable(),
@@ -59,3 +62,4 @@ function filterDevices(devices: Device[], filters: Filters) {
 const matches = filterDevices(devices, object);
 console.log(`${matches.length} match(es):`);
 console.log(matches);
+
